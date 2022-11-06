@@ -51,4 +51,4 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation))
 // PATCH /users/:id
 // DELETE /users/:id
 
-app.listen(port, () => console.log(`Listening on ${port}`));
+app.listen(port, () => console.log(`Listening on http://localhost:${port}/`));
