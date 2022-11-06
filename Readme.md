@@ -6,7 +6,7 @@
 
 Make sure that npm and node are running and up to date. 
 
-## 🚀 Installing project dependencies project for the first time
+## 🚀 Installing project dependencies for the first time
 
 Open the folder of the project and run in the command prompt:
 
