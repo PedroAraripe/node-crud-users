@@ -21,7 +21,7 @@ After all the project dependencies installed run in the command line:
 npm start
 ```
 
-This sould appears on your terminal:
+This should appears on your terminal:
 
 ```sh
 .
