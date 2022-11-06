@@ -1,0 +1,347 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Focused on users CRUD",
+    "version": "1.0.0",
+    "title": "Documentation of server routes in Node-Middleware"
+  },
+  "host": "localhost:3000/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users/{called_id}": {  
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get users list",
+        "description": "Get current users list",
+        "operationId": "getUsers",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "called_id",
+            "in": "path",
+            "description": "The id of the user sending the request",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsersFullList"
+            }
+          },
+          "400": {
+            "description": "Invalid username supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Create user",
+        "description": "Create a user",
+        "operationId": "createUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "called_id",
+            "in": "path",
+            "description": "The id of the user sending the request",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UsersPartial"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "user_token": [
+            ]
+          }
+        ]
+      }
+    },
+    "/users/{called_id}/logs": {  
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get logs of the the users list manipulation",
+        "description": "Get the history of actions executed in the users list",
+        "operationId": "getUsersLogs",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "called_id",
+            "in": "path",
+            "description": "The id of the user sending the request",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema" : {
+              "$ref": "#/definitions/UsersManipulationLogs"
+            }
+          },
+          "400": {
+            "description": "Invalid username supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "security": [
+          {
+            "user_token": [
+            ]
+          }
+        ]
+      }
+    },
+    "/users/{called_id}/{id}": {
+      "put": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Updated user",
+        "description": "This can only be executed by a admin user",
+        "operationId": "updateUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "called_id",
+            "in": "path",
+            "description": "The id of the user sending the request",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the user that'll be manipulated by the route",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UsersFull"
+            }
+          },
+          "400": {
+            "description": "Invalid username supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Delete user",
+        "description": "This can only be executed by a admin user",
+        "operationId": "deleteUser",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid user id supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "security": [
+          {
+            "user_token": [
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "user_token": {
+      "type": "apiKey",
+      "name": "user_token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "UsersFull": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "empresa": {
+          "type": "string"
+        },
+        "permissao": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "id": 32165,
+        "nome": "Lucas",
+        "empresa": "Keller Williams",
+        "permissao": "ADMIN"
+      },
+      "xml": {
+        "name": "UsersFull"
+      }
+    },
+    "UsersFullList": {
+      "type": "array",
+      "items" : {
+        "$ref": "#/definitions/UsersFull"
+      },
+      "example": [
+        {
+          "id": 32165,
+          "nome": "Lucas",
+          "empresa": "Keller Williams",
+          "permissao": "ADMIN"
+        },
+        {
+          "id": 14564,
+          "nome": "Aline",
+          "empresa": "Keller Williams",
+          "permissao": "USER"
+        },
+        {
+          "id": 22314,
+          "nome": "Bruno",
+          "empresa": "Keller Williams",
+          "permissao": "USER"
+        }
+      ]
+    },
+    "UsersPartial": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "empresa": {
+          "type": "string"
+        },
+        "permissao": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "UsersPartial"
+      },
+      "example": {
+          "nome": "Lucas",
+          "empresa": "Keller Williams",
+          "permissao": "ADMIN"
+      }
+    },
+    "UsersLogin": {
+      "type": "object",
+      "properties": {
+        "empresa": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "UsersLogin"
+      }
+    },
+    "UsersManipulationLogs": {
+      "type": "array",
+      "items" : {
+        "type": "string"
+      },
+      "example": [
+        "User 395 created user 355",
+        "User 395 updated user 355",
+        "User 395 deleted user 355"
+      ]
+    }
+  }
+}
