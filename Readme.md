@@ -21,6 +21,8 @@ Server running on http://localhost:3000/
 Docs running on http://localhost:3000/api-docs/#/
 ```
 
+With the server running, check the routes documentation with examples included on [here](http://localhost:3000/api-docs/#/)
+
 ## ☕ Usando node-docker-template
 
 Para usar node-docker-template, siga estas etapas:
