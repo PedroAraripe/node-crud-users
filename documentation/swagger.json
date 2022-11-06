@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Focused on users CRUD",
+    "description": "All routes related to users",
     "version": "1.0.0",
-    "title": "Documentation of server routes in Node-Middleware"
+    "title": "Documentation of Node Users Crud"
   },
   "host": "localhost:3000/",
   "schemes": [
