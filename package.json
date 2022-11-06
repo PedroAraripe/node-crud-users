@@ -1,4 +1,8 @@
 {
+  "name": "node-crud-users",
+  "version": "1.0.0",
+  "description": "Users crud project with node ",
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
@@ -8,5 +12,19 @@
     "express": "^4.18.2",
     "swagger-ui-express": "^4.5.0",
     "uuid": "^9.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroAraripe/node-crud-users.git"
+  },
+  "keywords": [
+    "javascript",
+    "express",
+    "node",
+    "swagger"
+  ],
+  "bugs": {
+    "url": "https://github.com/PedroAraripe/node-crud-users/issues"
+  },
+  "homepage": "https://github.com/PedroAraripe/node-crud-users#readme"
 }
