@@ -34,4 +34,6 @@ Docs running on http://localhost:3000/api-docs/#/
 .
 ```
 
+With the server running:
+
 Take a look on the server routes documentation with examples included on [HERE](http://localhost:3000/api-docs/#/)
