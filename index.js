@@ -8,7 +8,7 @@ app.use(cors());
 
 const swaggerUi = require("swagger-ui-express");
 
-const swaggerDocumentation = require("./swagger.json");
+const swaggerDocumentation = require("./documentation/swagger.json");
 
 const port = 3000;
 const baseUrl = `http://localhost:${port}`;
