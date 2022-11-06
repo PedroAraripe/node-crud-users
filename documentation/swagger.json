@@ -3,7 +3,7 @@
   "info": {
     "description": "All routes related to users",
     "version": "1.0.0",
-    "title": "Documentation of Node Users Crud"
+    "title": "Documentation of Node Crud Users"
   },
   "host": "localhost:3000/",
   "schemes": [

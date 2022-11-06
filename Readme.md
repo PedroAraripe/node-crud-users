@@ -1,4 +1,4 @@
-# Node Users Crud
+# Node Crud Users
 
 <img src="./documentation/base_documentation.png" alt="project base documentation">
 
