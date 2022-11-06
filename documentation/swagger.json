@@ -15,7 +15,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Get users list",
+        "summary": "Get users",
         "description": "Get current users list",
         "operationId": "getUsers",
         "produces": [
@@ -127,7 +127,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Updated user",
+        "summary": "Update user",
         "description": "This can only be executed by a admin user",
         "operationId": "updateUser",
         "consumes": [
