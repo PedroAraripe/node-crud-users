@@ -6,13 +6,6 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-const swaggerUi = require("swagger-ui-express");
-
-const swaggerDocumentation = require("./documentation/swagger.json");
-
-const port = 3000;
-const baseUrl = `http://localhost:${port}`;
-
 let users = [
   {
     id: 032165,
@@ -33,17 +26,11 @@ let users = [
     permissao: "USER",
   },
 ];
-
+// DEFINA UM MIDDLEWARE QUE VERIFIQUE SE O USUÁRIO QUE ESTÁ ENVIANDO O REQUEST TEM A PERMISSÃO DE ADMINISTRADOR
 function isAdmin(req, res, next) {
   let { callerId } = req.params;
-  // TODO #2: 
-  // DEFINA UM MIDDLEWARE QUE VERIFIQUE SE O USUÁRIO QUE ESTÁ ENVIANDO O REQUEST TEM A PERMISSÃO DE ADMINISTRADOR
+  // TODO
 }
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation))
-
-// TODO #1:
-// Create routes CRUD operations
 
 // ROTAS EXECUTANDO FUNÇÕES CRUD NA ARRAY DE USUÁRIOS, ONDE SOMENTE O ADMINISTRADOR PODE CRIAR OU DELETAR UM USUÁRIO.
 // ENVIE A ID DE QUEM ESTÁ ENVIANDO O REQUEST COMO PARÂMETRO NA URL " calledId "
@@ -55,4 +42,4 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation))
 // PATCH /users/:id
 // DELETE /users/:id
 
-app.listen(port, () => console.log(`\nServer running on ${baseUrl}/\nDocs running on ${baseUrl}/api-docs/#/\n`));
+app.listen(3000);

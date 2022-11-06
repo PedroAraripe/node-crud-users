@@ -10,7 +10,7 @@
     "http"
   ],
   "paths": {
-    "/users/{called_id}": {  
+    "/users/{callerId}": {  
       "get": {
         "tags": [
           "users"
@@ -24,11 +24,11 @@
         ],
         "parameters": [
           {
-            "name": "called_id",
+            "name": "callerId",
             "in": "path",
             "description": "The id of the user sending the request",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
@@ -39,7 +39,7 @@
             }
           },
           "400": {
-            "description": "Invalid username supplied"
+            "description": "Invalid id supplied"
           },
           "404": {
             "description": "User not found"
@@ -62,11 +62,11 @@
         ],
         "parameters": [
           {
-            "name": "called_id",
+            "name": "callerId",
             "in": "path",
             "description": "The id of the user sending the request",
             "required": true,
-            "type": "integer"
+            "type": "string"
           },
           {
             "in": "body",
@@ -82,16 +82,10 @@
           "default": {
             "description": "successful operation"
           }
-        },
-        "security": [
-          {
-            "user_token": [
-            ]
-          }
-        ]
+        }
       }
     },
-    "/users/{called_id}/logs": {  
+    "/users/{callerId}/logs": {  
       "get": {
         "tags": [
           "users"
@@ -105,11 +99,11 @@
         ],
         "parameters": [
           {
-            "name": "called_id",
+            "name": "callerId",
             "in": "path",
             "description": "The id of the user sending the request",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
@@ -120,21 +114,15 @@
             }
           },
           "400": {
-            "description": "Invalid username supplied"
+            "description": "Invalid id supplied"
           },
           "404": {
             "description": "User not found"
           }
-        },
-        "security": [
-          {
-            "user_token": [
-            ]
-          }
-        ]
+        }
       }
     },
-    "/users/{called_id}/{id}": {
+    "/users/{callerId}/{calledId}": {
       "put": {
         "tags": [
           "users"
@@ -151,18 +139,27 @@
         ],
         "parameters": [
           {
-            "name": "called_id",
+            "name": "callerId",
             "in": "path",
             "description": "The id of the user sending the request",
             "required": true,
-            "type": "integer"
+            "type": "string"
           },
           {
-            "name": "id",
+            "name": "calledId",
             "in": "path",
             "description": "The id of the user that'll be manipulated by the route",
             "required": true,
-            "type": "integer"
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UsersPartial"
+            }
           }
         ],
         "responses": {
@@ -173,7 +170,7 @@
             }
           },
           "400": {
-            "description": "Invalid username supplied"
+            "description": "Invalid id supplied"
           },
           "404": {
             "description": "User not found"
@@ -193,9 +190,16 @@
         ],
         "parameters": [
           {
-            "name": "username",
+            "name": "callerId",
             "in": "path",
-            "description": "The name that needs to be deleted",
+            "description": "The id of the user sending the request",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "calledId",
+            "in": "path",
+            "description": "The id of the user that'll be manipulated by the route",
             "required": true,
             "type": "string"
           }
@@ -210,21 +214,8 @@
           "404": {
             "description": "User not found"
           }
-        },
-        "security": [
-          {
-            "user_token": [
-            ]
-          }
-        ]
+        }
       }
-    }
-  },
-  "securityDefinitions": {
-    "user_token": {
-      "type": "apiKey",
-      "name": "user_token",
-      "in": "header"
     }
   },
   "definitions": {
@@ -338,9 +329,9 @@
         "type": "string"
       },
       "example": [
-        "User 395 created user 355",
-        "User 395 updated user 355",
-        "User 395 deleted user 355"
+        "User 1 created user 32165",
+        "User 1 created user 14564",
+        "User 1 created user 22314"
       ]
     }
   }
