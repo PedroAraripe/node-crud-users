@@ -6,19 +6,19 @@ module.exports = [
   {
     id: uuidv1(),
     nome: "Lucas",
-    empresa: "Keller Williams",
+    empresa: "KW",
     permissao: "ADMIN",
   },
   {
     id: uuidv1(),
     nome: "Aline",
-    empresa: "Keller Williams",
+    empresa: "KW",
     permissao: "USER",
   },
   {
     id: uuidv1(),
     nome: "Bruno",
-    empresa: "Keller Williams",
+    empresa: "KW",
     permissao: "USER",
   },
 ]
