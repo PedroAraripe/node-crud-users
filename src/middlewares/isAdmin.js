@@ -1,15 +1,17 @@
-const users = require("../in-memory-data/users");
+const { User } = require("../models/user");
 
 const isAdmin = (req, res, next) => {
   const { callerId } = req.params;
-  const userCaller = users.find(user => user.id === callerId);
+
+  const userInstance = new User();
+  const userCaller = userInstance.find(callerId);
 
   if((!userCaller || userCaller.permissao.toUpperCase() !== "ADMIN")) {
     res.status(400).send({error: "Unauthorized"});
-    
+
   } else {
     next();
-    
+
   }
 }
 

@@ -16,7 +16,7 @@ const Create = (req, res) => {
   const { callerId } = req.params;
 
   const user = new User(name, enterprise, permition);
-  users.push(user);
+  user.create();
 
   const userLog = new UserLog(callerId, user.id, 'created');
   userLog.send();
@@ -33,16 +33,15 @@ const Update = (req, res) => {
       permissao: permition,
   } = req.body;
 
-  const user = users.find(usr => usr.id === calledId);
+  const userToUpdate = new User(name, enterprise, permition);
+  const user = userToUpdate.find(calledId);
 
   if(!user) {
-    return res.status(404).send({error: "User not found"})
+    return res.status(404).send({error: "User not found"});
   }
-  
-  user.nome = name;
-  user.empresa = enterprise;
-  user.permissao = permition;
-  
+
+  userToUpdate.update(calledId);
+    
   const userLog = new UserLog(callerId, calledId, 'updated');
   userLog.send();
   
@@ -55,22 +54,14 @@ const Delete = (req, res) => {
   const userIndex = users.findIndex(usr => usr.id === calledId);
   const isValidCalledId = calledId && (userIndex !== -1);
 
-  const isLastUser = userIndex === users.length - 1;
-
   if(!calledId || !isValidCalledId) {
     return res.status(404).send({error: "User not found"});
 
-  } else if (!isLastUser && isValidCalledId) {
-    for (let currentIndex = 0; currentIndex < users.length; currentIndex++) {
-      
-      if(currentIndex >= userIndex) {
-        users[currentIndex] = users[currentIndex + 1];
-      }
-    }
-    
+  } else if (isValidCalledId) {
+    const userToDelete = new User();
+
+    userToDelete.delete(calledId)
   }
-  
-  users.pop();
 
   const userLog = new UserLog(callerId, calledId, 'deleted');
   userLog.send();
