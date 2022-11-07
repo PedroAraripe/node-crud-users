@@ -82,7 +82,8 @@
           "default": {
             "description": "successful operation"
           }
-        }
+        },
+        "security": [{"caller_id_validated": [] }]
       }
     },
     "/users/{callerId}/logs": {  
@@ -214,7 +215,8 @@
           "404": {
             "description": "User not found"
           }
-        }
+        },
+        "security": [{"caller_id_validated": [] }]
       }
     }
   },
@@ -254,7 +256,7 @@
       "example": {
         "id": 32165,
         "nome": "Lucas",
-        "empresa": "Keller Williams",
+        "empresa": "KW",
         "permissao": "ADMIN"
       },
       "xml": {
@@ -270,19 +272,19 @@
         {
           "id": 32165,
           "nome": "Lucas",
-          "empresa": "Keller Williams",
+          "empresa": "KW",
           "permissao": "ADMIN"
         },
         {
           "id": 14564,
           "nome": "Aline",
-          "empresa": "Keller Williams",
+          "empresa": "KW",
           "permissao": "USER"
         },
         {
           "id": 22314,
           "nome": "Bruno",
-          "empresa": "Keller Williams",
+          "empresa": "KW",
           "permissao": "USER"
         }
       ]
@@ -305,7 +307,7 @@
       },
       "example": {
           "nome": "Lucas",
-          "empresa": "Keller Williams",
+          "empresa": "KW",
           "permissao": "ADMIN"
       }
     },
