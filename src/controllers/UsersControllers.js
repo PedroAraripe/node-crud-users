@@ -16,7 +16,7 @@ const Create = (req, res) => {
   const { callerId } = req.params;
 
   const user = new User(name, enterprise, permition);
-  user.send();
+  users.push(user);
 
   const userLog = new UserLog(callerId, user.id, 'created');
   userLog.send();

@@ -1,5 +1,4 @@
 const { v1: uuidv1 } = require('uuid');
-const users = require('../in-memory-data/users');
   
 class User {
   constructor(name, enterprise, permition) {
@@ -7,10 +6,6 @@ class User {
     this.name = name;
     this.enterprise = enterprise;
     this.permition = permition;
-  }
-
-  send() {
-    users.push(this);
   }
 }
 
