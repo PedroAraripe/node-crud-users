@@ -4,6 +4,8 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocumentation = require("../documentation/swagger.json");
 
+const open = require('open'); // This'll be used to open the documentation url on server start
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
@@ -30,6 +32,8 @@ const serverUpCB = () => {
   const logDocumentationUrl = `Docs running on ${apiDocumentationUrl}`;
 
   console.log(`\n${logBaseUrl}\n${logDocumentationUrl}\n`);
+
+  open(apiDocumentationUrl);
 }
 
 app.listen(port, serverUpCB);
