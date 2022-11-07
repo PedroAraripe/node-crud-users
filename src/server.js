@@ -21,10 +21,9 @@ app.use('/users/:callerId/', require('./controllers/Users'));
 
 app.use((req, res, next) => {
   res.status(404).json({
-    msg: `Ohh you are lost, read the API documentation at ${apiDocumentationUrl} to find your way back home`
+    error: `Ohh you are lost, read the API documentation at ${apiDocumentationUrl} to find your way back home`
   })
 })
-
 
 const serverUpCB = () => {
   const logBaseUrl = `Server running on ${baseUrl}/`;
