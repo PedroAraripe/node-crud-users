@@ -1,6 +1,6 @@
-const users = require("../in-memory-data/users");
-const { User } = require("../models/User");
-const { UserLog } = require("../models/UserLog");
+const users = require("../../in-memory-data/users");
+const { User } = require("../../models/User");
+const { UserLog } = require("../../models/UserLog");
 
 const List = (req, res) => {
   res.send(users);
@@ -34,6 +34,10 @@ const Update = (req, res) => {
   } = req.body;
 
   const user = users.find(usr => usr.id === calledId);
+
+  if(!user) {
+    return res.status(404).send({error: "User not found"})
+  }
   
   user.nome = name;
   user.empresa = enterprise;
@@ -53,14 +57,10 @@ const Delete = (req, res) => {
 
   const isLastUser = userIndex === users.length - 1;
 
-  if(!calledId) {
-    res.status(404).send({msg: "Invalid calledId"});
+  if(!calledId || !isValidCalledId) {
+    return res.status(404).send({error: "User not found"});
 
-  } else if (!isValidCalledId) {
-    res.status(404).send({msg: "User not found"});
-    
-  }
-  else if (!isLastUser && isValidCalledId) {
+  } else if (!isLastUser && isValidCalledId) {
     for (let currentIndex = 0; currentIndex < users.length; currentIndex++) {
       
       if(currentIndex >= userIndex) {
