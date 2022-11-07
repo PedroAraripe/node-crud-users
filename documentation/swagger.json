@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "All routes related to users",
+    "description": "All users routes for visualization and manipulation with validations and admin middleware",
     "version": "1.0.0",
     "title": "Documentation of Node Crud Users"
   },
