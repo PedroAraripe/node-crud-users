@@ -8,7 +8,7 @@ class UserLog {
   }
 
   send () {
-    usersMutationLogs.push(this.msg)
+    usersMutationLogs.push(this.msg);
   }
 }
 
